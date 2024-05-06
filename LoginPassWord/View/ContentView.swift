@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var listUsers:[User] = [User(userName: "philippe", userImage: "men", passWord: "1234"),User(userName: "sandrine", userImage: "wooman", passWord: "5678")]
+    @State private var listOfUsers:ListData = ListData()
     @State private var password: String = ""
     @State private var isAuthenticated: Bool = false
     @State private var userChoise:Int = 0
@@ -16,7 +16,7 @@ struct ContentView: View {
     
     var body: some View {
         VStack {
-            Image((listUsers[userChoise].userImage))
+            Image((listOfUsers.listUsers()[userChoise].userImage))
                 .resizable()
                 .aspectRatio(contentMode: .fit)
                 .frame(width:150, height: 150)
@@ -25,8 +25,8 @@ struct ContentView: View {
                 
             // picker de selection des utilisateurs
             Picker("Users", selection: $userChoise) {
-                ForEach(0..<listUsers.count, id: \.self) { index in
-                    Text("Utilisateur \(listUsers[index].userName)").tag(index)
+                ForEach(0..<listOfUsers.listUsers().count, id: \.self) { index in
+                    Text("Utilisateur \(listOfUsers.listUsers()[index].userName)").tag(index)
                 }
             
             }
@@ -57,7 +57,7 @@ struct ContentView: View {
     }
 //authentification utilisateur
     func authenticateUser(password: String) {
-        if  password == listUsers[userChoise].passWord {
+        if  password == listOfUsers.listUsers()[userChoise].passWord {
             isAuthenticated = true
         } else {
             isAuthenticated = false

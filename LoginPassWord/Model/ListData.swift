@@ -6,3 +6,8 @@
 //
 
 import Foundation
+class ListData {
+    func listUsers() -> [User] {
+        return [User(userName: "philippe", userImage: "men", passWord: "1234"),User(userName: "sandrine", userImage: "wooman", passWord: "5678")]
+    }
+}
