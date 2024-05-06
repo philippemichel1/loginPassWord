@@ -15,46 +15,56 @@ struct ContentView: View {
 
     
     var body: some View {
-        VStack {
-            Image((listOfUsers.listUsers()[userChoise].userImage))
-                .resizable()
-                .aspectRatio(contentMode: .fit)
-                .frame(width:150, height: 150)
-                .clipShape(Circle())
-                .padding()
+        NavigationStack {
+            VStack {
+                Image((listOfUsers.listUsers()[userChoise].userImage))
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(width:150, height: 150)
+                    .clipShape(Circle())
+                    .padding()
+                    
+                // picker de selection des utilisateurs
+                Picker("Users", selection: $userChoise) {
+                    ForEach(0..<listOfUsers.listUsers().count, id: \.self) { index in
+                        Text("Utilisateur \(listOfUsers.listUsers()[index].userName)").tag(index)
+                    }
                 
-            // picker de selection des utilisateurs
-            Picker("Users", selection: $userChoise) {
-                ForEach(0..<listOfUsers.listUsers().count, id: \.self) { index in
-                    Text("Utilisateur \(listOfUsers.listUsers()[index].userName)").tag(index)
+                }
+                .pickerStyle(.automatic)
+                .onChange(of: userChoise) {
+                 password = ""
+                isAuthenticated = false
+                
                 }
             
-            }
-            .pickerStyle(.automatic)
-            .onChange(of: userChoise) {
-             password = ""
-            isAuthenticated = false
-            
-            }
-        
-            SecureField("Mot de passe", text: $password)
-                .onSubmit() {
+                SecureField("Mot de passe", text: $password)
+                    .onSubmit() {
+                        authenticateUser(password: password)
+                    }
+                    .padding()
+                    .background(Color.gray.opacity(0.2))
+                    .cornerRadius(5)
+                Button("Connexion") {
                     authenticateUser(password: password)
                 }
                 .padding()
-                .background(Color.gray.opacity(0.2))
+                .foregroundColor(.white)
+                .background(isAuthenticated ? Color.green : Color.blue)
                 .cornerRadius(5)
-            Button("Connexion") {
-                authenticateUser(password: password)
+                
+                
+
+                
+                loginStatusMessage
             }
             .padding()
-            .foregroundColor(.white)
-            .background(isAuthenticated ? Color.green : Color.blue)
-            .cornerRadius(5)
-            loginStatusMessage
-        }
-        .padding()
+        }.navigationBarHidden(true)
+        
+            
     }
+    
+       
 //authentification utilisateur
     func authenticateUser(password: String) {
         if  password == listOfUsers.listUsers()[userChoise].passWord {
@@ -63,10 +73,16 @@ struct ContentView: View {
             isAuthenticated = false
         }
     }
+    
 
     var loginStatusMessage: some View {
         Text(isAuthenticated ? "Connecté avec succès!" : "Échec de la connexion")
             .foregroundColor(isAuthenticated ? .green : .red)
+    
+            .navigationDestination(isPresented: $isAuthenticated) {
+                Text("Vous etes logger sous: \(listOfUsers.listUsers()[userChoise].userName)").tag(userChoise)
+            }
+        
     }
 }
 
