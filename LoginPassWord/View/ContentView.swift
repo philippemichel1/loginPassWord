@@ -33,9 +33,14 @@ struct ContentView: View {
             .pickerStyle(.automatic)
             .onChange(of: userChoise) {
              password = ""
+            isAuthenticated = false
+            
             }
         
             SecureField("Mot de passe", text: $password)
+                .onSubmit() {
+                    authenticateUser(password: password)
+                }
                 .padding()
                 .background(Color.gray.opacity(0.2))
                 .cornerRadius(5)
