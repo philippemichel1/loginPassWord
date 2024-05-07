@@ -52,10 +52,10 @@ struct ContentView: View {
                 .onChange(of: userChoise) {
                  password = ""
                 isAuthenticated = false
+                focus = true
                 }
             
                 SecureField("Mot de passe", text: $password)
-                    .foregroundColor(.black)
                     .onSubmit() {
                         authenticateUser(password: password)
                     }
@@ -63,19 +63,20 @@ struct ContentView: View {
                     .padding()
                     .background(Color.gray.opacity(0.2))
                     .cornerRadius(5)
+                    .onAppear {
+                        focus = true
+                        password = ""
+                    }
                 Button("Connexion") {
                     authenticateUser(password: password)
                 }
                 .padding()
                 .foregroundColor(.white)
-                .background(isAuthenticated ? Color.green : Color.myGreen)
+                .background(.myGreen)
                 .cornerRadius(5)
                 // Champ est à vide
-                .onAppear {
-                    focus = true
-                    password = ""
-                }
                 
+
                 // Ecran lorsque la connexion à réussi
                 .navigationDestination(isPresented: $isAuthenticated) {
                     ZStack {
@@ -88,26 +89,24 @@ struct ContentView: View {
                             .scale(1.35)
                             .foregroundColor(.white)
                         VStack {
-                            Text("Vous etes connecté sous: \(listOfUsers.listUsers()[userChoise].userName)").tag(userChoise)
+                            Text("Vous etes connecté sous : \(listOfUsers.listUsers()[userChoise].userName)").tag(userChoise)
+                                .font(.title)
+                                .padding()
+                                .shadow(color: .gray, radius: /*@START_MENU_TOKEN@*/10/*@END_MENU_TOKEN@*/)
                         }
                     }
                 }
-                // affiche
+                // affiche la fenetre d'alerte
                 .alert("Erreur", isPresented: $showAlert) {
                     //loginStatusMessage
                     Text("Echec de connexion")
-                    Button("OK", role: .cancel) { focus = true }
-                    
+                    Button("OK", role: .cancel)  {focus = true}
                 }
             }
             .padding()
             }
         }
         .navigationBarHidden(true)
-        
-        
-        
-            
     }
     
 //authentification utilisateur
