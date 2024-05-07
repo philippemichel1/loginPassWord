@@ -45,6 +45,7 @@ struct ContentView: View {
                 Picker("Users", selection: $userChoise) {
                     ForEach(0..<listOfUsers.listUsers().count, id: \.self) { index in
                         Text("Utilisateur \(listOfUsers.listUsers()[index].userName)").tag(index)
+                            .foregroundStyle(.black)
                     }
                 }
                 .pickerStyle(.automatic)
@@ -54,6 +55,7 @@ struct ContentView: View {
                 }
             
                 SecureField("Mot de passe", text: $password)
+                    .foregroundColor(.black)
                     .onSubmit() {
                         authenticateUser(password: password)
                     }
@@ -66,7 +68,7 @@ struct ContentView: View {
                 }
                 .padding()
                 .foregroundColor(.white)
-                .background(isAuthenticated ? Color.green : Color.blue)
+                .background(isAuthenticated ? Color.green : Color.myGreen)
                 .cornerRadius(5)
                 // Champ est à vide
                 .onAppear {
@@ -74,6 +76,7 @@ struct ContentView: View {
                     password = ""
                 }
                 
+                // Ecran lorsque la connexion à réussi
                 .navigationDestination(isPresented: $isAuthenticated) {
                     ZStack {
                         Color.yellow
@@ -85,13 +88,14 @@ struct ContentView: View {
                             .scale(1.35)
                             .foregroundColor(.white)
                         VStack {
-                            Text("Vous etes logger sous: \(listOfUsers.listUsers()[userChoise].userName)").tag(userChoise)
+                            Text("Vous etes connecté sous: \(listOfUsers.listUsers()[userChoise].userName)").tag(userChoise)
                         }
                     }
                 }
+                // affiche
                 .alert("Erreur", isPresented: $showAlert) {
                     //loginStatusMessage
-                    Text("Erreur de connexion")
+                    Text("Echec de connexion")
                     Button("OK", role: .cancel) { focus = true }
                     
                 }
