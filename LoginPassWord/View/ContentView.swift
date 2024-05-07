@@ -10,6 +10,7 @@ import SwiftUI
 struct ContentView: View {
     @State private var listOfUsers:ListData = ListData()
     @State private var password: String = ""
+    @FocusState private var focus:Bool
     @State private var isAuthenticated: Bool = false
     @State private var userChoise:Int = 0
     @State private var showAlert:Bool = false
@@ -56,6 +57,7 @@ struct ContentView: View {
                     .onSubmit() {
                         authenticateUser(password: password)
                     }
+                    .focused($focus)
                     .padding()
                     .background(Color.gray.opacity(0.2))
                     .cornerRadius(5)
@@ -68,6 +70,7 @@ struct ContentView: View {
                 .cornerRadius(5)
                 // Champ est à vide
                 .onAppear {
+                    focus = true
                     password = ""
                 }
                 
@@ -89,7 +92,7 @@ struct ContentView: View {
                 .alert("Erreur", isPresented: $showAlert) {
                     //loginStatusMessage
                     Text("Erreur de connexion")
-                    Button("OK", role: .cancel) { }
+                    Button("OK", role: .cancel) { focus = true }
                     
                 }
             }
