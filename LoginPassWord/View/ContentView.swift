@@ -15,7 +15,6 @@ struct ContentView: View {
     @State private var userChoise:Int = 0
     @State private var showAlert:Bool = false
 
-
     var body: some View {
         NavigationStack {
             ZStack{
@@ -97,9 +96,8 @@ struct ContentView: View {
                     }
                 }
                 // affiche la fenetre d'alerte
-                .alert("Erreur", isPresented: $showAlert) {
-                    //loginStatusMessage
-                    Text("Echec de connexion")
+                .alert("Information", isPresented: $showAlert) {
+                    Text("Echec de connexion !")
                     Button("OK", role: .cancel)  {focus = true}
                 }
             }
