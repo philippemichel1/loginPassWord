@@ -80,7 +80,19 @@ struct ContentView: View {
             .foregroundColor(isAuthenticated ? .green : .red)
     
             .navigationDestination(isPresented: $isAuthenticated) {
-                Text("Vous etes logger sous: \(listOfUsers.listUsers()[userChoise].userName)").tag(userChoise)
+                ZStack {
+                    Color.yellow
+                        .ignoresSafeArea()
+                    Circle()
+                        .scale(1.7)
+                        .foregroundColor(.white).opacity(0.16)
+                    Circle()
+                        .scale(1.35)
+                        .foregroundColor(.white)
+                    VStack {
+                        Text("Vous etes logger sous: \(listOfUsers.listUsers()[userChoise].userName)").tag(userChoise)
+                    }
+                }
             }
         
     }
