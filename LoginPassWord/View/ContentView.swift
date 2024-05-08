@@ -8,19 +8,22 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var listOfUsers:ListData = ListData()
+    @State private var listOfDatas:ListData = ListData()
     @State private var password: String = ""
     @FocusState private var focus:Bool
     @State private var isAuthenticated: Bool = false
     @State private var userChoise:Int = 0
     @State private var showAlert:Bool = false
+    @State private var switchColorfont = true
+    @State private var colorInterface = 0
 
     var body: some View {
         NavigationStack {
             ZStack{
-                // fond
-                Color.myGreen
+                ColorSwitchButton(colorChoise: $colorInterface)
+                Color(listOfDatas.colorInterface()[colorInterface])
                     .ignoresSafeArea()
+                
                 Circle()
                     .scale(1.7)
                     .foregroundColor(.white).opacity(0.16)
@@ -32,7 +35,7 @@ struct ContentView: View {
                     .font(.largeTitle)
                     .bold()
                 // image
-                UserImage(image:.constant( (listOfUsers.listUsers()[userChoise].userImage)))
+                UserImage(image:.constant( (listOfDatas.listUsers()[userChoise].userImage)))
           
                     
                 // picker de selection des utilisateurs
@@ -61,13 +64,12 @@ struct ContentView: View {
                 }
                 .padding()
                 .foregroundColor(.white)
-                .background(.myGreen)
+                .background(listOfDatas.colorInterface()[colorInterface])
                 .cornerRadius(5)
-                
                 
                 // Ecran lorsque la connexion à réussi
                 .navigationDestination(isPresented: $isAuthenticated) {
-                    UserConnectedView(userConnected: .constant((listOfUsers.listUsers()[userChoise].userName)), index: .constant(userChoise))
+                    UserConnectedView(userConnected: .constant((listOfDatas.listUsers()[userChoise].userName)), index: .constant(userChoise))
                 }
                 // affiche la fenetre d'alerte
                 .alert("Information", isPresented: $showAlert) {
@@ -81,9 +83,10 @@ struct ContentView: View {
         .navigationBarHidden(true)
     }
     
+    
 //authentification utilisateur
     func authenticateUser(password: String) {
-        if  password == listOfUsers.listUsers()[userChoise].passWord {
+        if  password == listOfDatas.listUsers()[userChoise].passWord {
             isAuthenticated = true
         } else {
             isAuthenticated = false

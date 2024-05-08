@@ -8,11 +8,33 @@
 import SwiftUI
 
 struct ColorSwitchButton: View {
+    @State private var listOfDatas:ListData = ListData()
+    @Binding var colorChoise:Int
+    
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        NavigationStack() {
+            ZStack {
+                
+            }
+            .toolbar {
+                ToolbarItem(placement: .topBarTrailing) {
+                    Button(action: {
+                        if colorChoise < listOfDatas.colorInterface().count - 1 {
+                            colorChoise += 1
+                        } else {
+                            colorChoise = 0
+                        }
+                        
+                    }) {
+                        Image(systemName: "swatchpalette.fill")
+                    }
+                }
+            }
+        }
     }
 }
 
 #Preview {
-    ColorSwitchButton()
+    ColorSwitchButton(colorChoise: .constant(0))
 }

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3740FAF22BEBC5D400611A45 /* ColorSwitchButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3740FAF12BEBC5D400611A45 /* ColorSwitchButton.swift */; };
 		376D9CAD2BEB754700A23FF2 /* PickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 376D9CAC2BEB754700A23FF2 /* PickerView.swift */; };
 		376D9CAF2BEB7A2200A23FF2 /* UserImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 376D9CAE2BEB7A2200A23FF2 /* UserImage.swift */; };
 		376D9CB32BEB8C4200A23FF2 /* UserConnectedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 376D9CB22BEB8C4200A23FF2 /* UserConnectedView.swift */; };
@@ -19,6 +20,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3740FAF12BEBC5D400611A45 /* ColorSwitchButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorSwitchButton.swift; sourceTree = "<group>"; };
 		376D9CAC2BEB754700A23FF2 /* PickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerView.swift; sourceTree = "<group>"; };
 		376D9CAE2BEB7A2200A23FF2 /* UserImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserImage.swift; sourceTree = "<group>"; };
 		376D9CB22BEB8C4200A23FF2 /* UserConnectedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserConnectedView.swift; sourceTree = "<group>"; };
@@ -92,6 +94,7 @@
 			isa = PBXGroup;
 			children = (
 				3772E24A2BE7D7B400B6E466 /* ContentView.swift */,
+				3740FAF12BEBC5D400611A45 /* ColorSwitchButton.swift */,
 				376D9CB22BEB8C4200A23FF2 /* UserConnectedView.swift */,
 				376D9CAC2BEB754700A23FF2 /* PickerView.swift */,
 				376D9CAE2BEB7A2200A23FF2 /* UserImage.swift */,
@@ -183,6 +186,7 @@
 				376D9CB32BEB8C4200A23FF2 /* UserConnectedView.swift in Sources */,
 				376D9CAD2BEB754700A23FF2 /* PickerView.swift in Sources */,
 				379F3DFE2BE9130200C9EE2F /* ListData.swift in Sources */,
+				3740FAF22BEBC5D400611A45 /* ColorSwitchButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
