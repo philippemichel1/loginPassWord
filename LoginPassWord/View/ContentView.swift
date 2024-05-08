@@ -31,23 +31,12 @@ struct ContentView: View {
                 Text("Login")
                     .font(.largeTitle)
                     .bold()
-                Image((listOfUsers.listUsers()[userChoise].userImage))
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .frame(width:150, height: 150)
-                    .clipShape(Circle())
-                    .shadow(color: .gray, radius: /*@START_MENU_TOKEN@*/10/*@END_MENU_TOKEN@*/)
-                    
-                    .padding()
+                // image
+                UserImage(image:.constant( (listOfUsers.listUsers()[userChoise].userImage)))
+          
                     
                 // picker de selection des utilisateurs
-                Picker("Users", selection: $userChoise) {
-                    ForEach(0..<listOfUsers.listUsers().count, id: \.self) { index in
-                        Text("Utilisateur \(listOfUsers.listUsers()[index].userName)").tag(index)
-                            .foregroundStyle(.black)
-                    }
-                }
-                .pickerStyle(.automatic)
+                PickerView(userChoise: $userChoise)
                 .onChange(of: userChoise) {
                  password = ""
                 isAuthenticated = false
@@ -55,17 +44,18 @@ struct ContentView: View {
                 }
             
                 SecureField("Mot de passe", text: $password)
-                    .onSubmit() {
-                        authenticateUser(password: password)
-                    }
                     .focused($focus)
                     .padding()
                     .background(Color.gray.opacity(0.2))
                     .cornerRadius(5)
+                    .onSubmit() {
+                        authenticateUser(password: password)
+                    }
                     .onAppear {
                         focus = true
                         password = ""
                     }
+               //
                 Button("Connexion") {
                     authenticateUser(password: password)
                 }
@@ -73,27 +63,11 @@ struct ContentView: View {
                 .foregroundColor(.white)
                 .background(.myGreen)
                 .cornerRadius(5)
-                // Champ est à vide
                 
-
+                
                 // Ecran lorsque la connexion à réussi
                 .navigationDestination(isPresented: $isAuthenticated) {
-                    ZStack {
-                        Color.yellow
-                            .ignoresSafeArea()
-                        Circle()
-                            .scale(1.7)
-                            .foregroundColor(.white).opacity(0.16)
-                        Circle()
-                            .scale(1.35)
-                            .foregroundColor(.white)
-                        VStack {
-                            Text("Vous etes connecté sous : \(listOfUsers.listUsers()[userChoise].userName)").tag(userChoise)
-                                .font(.title)
-                                .padding()
-                                .shadow(color: .gray, radius: /*@START_MENU_TOKEN@*/10/*@END_MENU_TOKEN@*/)
-                        }
-                    }
+                    UserConnectedView(userConnected: .constant((listOfUsers.listUsers()[userChoise].userName)), index: .constant(userChoise))
                 }
                 // affiche la fenetre d'alerte
                 .alert("Information", isPresented: $showAlert) {

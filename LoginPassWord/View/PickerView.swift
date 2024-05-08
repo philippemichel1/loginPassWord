@@ -8,11 +8,20 @@
 import SwiftUI
 
 struct PickerView: View {
+    @State private var listOfUsers:ListData = ListData()
+    @Binding var userChoise:Int
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        Picker("Users", selection: $userChoise) {
+            ForEach(0..<listOfUsers.listUsers().count, id: \.self) { index in
+                Text("Utilisateur \(listOfUsers.listUsers()[index].userName)").tag(index)
+                    .foregroundStyle(.black)
+            }
+        }
+        .pickerStyle(.automatic)
     }
 }
 
 #Preview {
-    PickerView()
+    PickerView(userChoise: .constant(0))
 }

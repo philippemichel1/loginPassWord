@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		376D9CAD2BEB754700A23FF2 /* PickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 376D9CAC2BEB754700A23FF2 /* PickerView.swift */; };
+		376D9CAF2BEB7A2200A23FF2 /* UserImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 376D9CAE2BEB7A2200A23FF2 /* UserImage.swift */; };
+		376D9CB32BEB8C4200A23FF2 /* UserConnectedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 376D9CB22BEB8C4200A23FF2 /* UserConnectedView.swift */; };
 		3772E2492BE7D7B400B6E466 /* LoginPassWordApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3772E2482BE7D7B400B6E466 /* LoginPassWordApp.swift */; };
 		3772E24B2BE7D7B400B6E466 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3772E24A2BE7D7B400B6E466 /* ContentView.swift */; };
 		3772E24D2BE7D7B600B6E466 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3772E24C2BE7D7B600B6E466 /* Assets.xcassets */; };
@@ -16,6 +19,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		376D9CAC2BEB754700A23FF2 /* PickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerView.swift; sourceTree = "<group>"; };
+		376D9CAE2BEB7A2200A23FF2 /* UserImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserImage.swift; sourceTree = "<group>"; };
+		376D9CB22BEB8C4200A23FF2 /* UserConnectedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserConnectedView.swift; sourceTree = "<group>"; };
 		3772E2452BE7D7B400B6E466 /* LoginPassWord.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LoginPassWord.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3772E2482BE7D7B400B6E466 /* LoginPassWordApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPassWordApp.swift; sourceTree = "<group>"; };
 		3772E24A2BE7D7B400B6E466 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -86,6 +92,9 @@
 			isa = PBXGroup;
 			children = (
 				3772E24A2BE7D7B400B6E466 /* ContentView.swift */,
+				376D9CB22BEB8C4200A23FF2 /* UserConnectedView.swift */,
+				376D9CAC2BEB754700A23FF2 /* PickerView.swift */,
+				376D9CAE2BEB7A2200A23FF2 /* UserImage.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -169,7 +178,10 @@
 			files = (
 				3772E24B2BE7D7B400B6E466 /* ContentView.swift in Sources */,
 				3772E25A2BE7D9CE00B6E466 /* User.swift in Sources */,
+				376D9CAF2BEB7A2200A23FF2 /* UserImage.swift in Sources */,
 				3772E2492BE7D7B400B6E466 /* LoginPassWordApp.swift in Sources */,
+				376D9CB32BEB8C4200A23FF2 /* UserConnectedView.swift in Sources */,
+				376D9CAD2BEB754700A23FF2 /* PickerView.swift in Sources */,
 				379F3DFE2BE9130200C9EE2F /* ListData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
