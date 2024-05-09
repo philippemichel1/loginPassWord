@@ -9,10 +9,10 @@ import SwiftUI
 
 struct PickerView: View {
     @State private var listOfUsers:ListData = ListData()
-    @Binding var userChoise:Int
+    @Binding var userChoice:Int
     
     var body: some View {
-        Picker("Users", selection: $userChoise) {
+        Picker("Users", selection: $userChoice) {
             ForEach(0..<listOfUsers.listUsers().count, id: \.self) { index in
                 Text("Utilisateur \(listOfUsers.listUsers()[index].userName)").tag(index)
                     .foregroundStyle(.black)
@@ -23,5 +23,5 @@ struct PickerView: View {
 }
 
 #Preview {
-    PickerView(userChoise: .constant(0))
+    PickerView(userChoice: .constant(0))
 }

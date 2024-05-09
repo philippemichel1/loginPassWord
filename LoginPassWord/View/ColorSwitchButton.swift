@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ColorSwitchButton: View {
     @State private var listOfDatas:ListData = ListData()
-    @Binding var colorChoise:Int
+    @Binding var colorChoice:Int
     
     
     var body: some View {
@@ -31,14 +31,14 @@ struct ColorSwitchButton: View {
     }
     // permet de passer à l'index de couleur suivante
     func switchColor() {
-        if colorChoise < listOfDatas.colorInterface().count - 1 {
-            colorChoise += 1
+        if colorChoice < listOfDatas.colorInterface().count - 1 {
+            colorChoice += 1
         } else {
-            colorChoise = 0
+            colorChoice = 0
         }
     }
 }
 
 #Preview {
-    ColorSwitchButton(colorChoise: .constant(0))
+    ColorSwitchButton(colorChoice: .constant(0))
 }

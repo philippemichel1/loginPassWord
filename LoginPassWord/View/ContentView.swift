@@ -12,33 +12,34 @@ struct ContentView: View {
     @State private var password: String = ""
     @FocusState private var focus:Bool
     @State private var isAuthenticated: Bool = false
-    @State private var userChoise:Int = 0
+    @State private var userChoice:Int = 0
     @State private var showAlert:Bool = false
-    @State private var switchColorfont = true
     @State private var colorInterface = 0
 
     var body: some View {
         NavigationStack {
             ZStack{
-                ColorSwitchButton(colorChoise: $colorInterface)
+                ColorSwitchButton(colorChoice: $colorInterface)
                 Color(listOfDatas.colorInterface()[colorInterface])
                     .ignoresSafeArea()
+                //vue design
                 InterfaceDesignView()
             VStack {
                 // titre app
                 TitleView()
                 // image
-                UserImage(image:.constant( (listOfDatas.listUsers()[userChoise].userImage)))
+                UserImage(image:.constant( (listOfDatas.listUsers()[userChoice].userImage)))
           
                     
                 // picker de selection des utilisateurs
-                PickerView(userChoise: $userChoise)
-                .onChange(of: userChoise) {
+                PickerView(userChoice: $userChoice)
+                .onChange(of: userChoice) {
                  password = ""
                 isAuthenticated = false
                 focus = true
                 }
             
+                // champs mot de passe
                 SecureField("Mot de passe", text: $password)
                     .focused($focus)
                     .padding()
@@ -47,11 +48,13 @@ struct ContentView: View {
                     .onSubmit() {
                         authenticateUser(password: password)
                     }
+                // initialisation du champs mot de passe
+                // du focus champs mot de passe
                     .onAppear {
                         focus = true
                         password = ""
                     }
-               //
+               // bouton de validation
                 Button("Connexion") {
                     authenticateUser(password: password)
                 }
@@ -62,9 +65,9 @@ struct ContentView: View {
                 
                 // Ecran lorsque la connexion à réussi
                 .navigationDestination(isPresented: $isAuthenticated) {
-                    UserConnectedView(userConnected: .constant((listOfDatas.listUsers()[userChoise].userName)), index: .constant(userChoise))
+                    UserConnectedView(userConnected: .constant((listOfDatas.listUsers()[userChoice].userName)), index: .constant(userChoice))
                 }
-                // affiche la fenetre d'alerte
+                // affiche la fenetre d'alerte si mot de passe incorrect
                 .alert("Information", isPresented: $showAlert) {
                     Text("Echec de connexion !")
                     Button("OK", role: .cancel)  {focus = true}
@@ -79,7 +82,7 @@ struct ContentView: View {
     
 //authentification utilisateur
     func authenticateUser(password: String) {
-        if  password == listOfDatas.listUsers()[userChoise].passWord {
+        if  password == listOfDatas.listUsers()[userChoice].passWord {
             isAuthenticated = true
         } else {
             isAuthenticated = false
