@@ -13,6 +13,6 @@ class ListData {
     }
     
     func colorInterface() -> [Color] {
-        return [.myGreen, .blue, .myRed, .yellow, .cyan, .orange, .indigo,.mint]
+        return [.myGreen, .blue, .myRed, .yellow, .cyan, .orange, .indigo,.mint,.brown, .pink,.purple,.gray]
     }
 }
