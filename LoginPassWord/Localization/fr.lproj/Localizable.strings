@@ -5,3 +5,5 @@
   Created by Philippe MICHEL on 09/05/2024.
   
 */
+"connectionButton" = "Connexion";
+"pickerText  %@" = "Utilisateur";

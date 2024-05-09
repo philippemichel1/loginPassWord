@@ -54,9 +54,11 @@ struct ContentView: View {
                         password = ""
                     }
                // bouton de validation
-                Button("Connexion") {
+                Button(action: {
                     authenticateUser(password: password)
-                }
+                }, label: {
+                    Text("Connexion")
+                })
                 .padding()
                 .foregroundColor(.white)
                 .background(listOfDatas.colorInterface()[colorInterface])

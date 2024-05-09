@@ -14,8 +14,9 @@ struct PickerView: View {
     var body: some View {
         Picker("Users", selection: $userChoice) {
             ForEach(0..<listOfUsers.listUsers().count, id: \.self) { index in
-                Text("Utilisateur \(listOfUsers.listUsers()[index].userName)").tag(index)
+                Text("\(listOfUsers.listUsers()[index].userName)").tag(index)
                     .foregroundStyle(.black)
+                
             }
         }
         .pickerStyle(.automatic)
