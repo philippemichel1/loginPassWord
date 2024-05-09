@@ -9,7 +9,13 @@ import SwiftUI
 
 struct InterfaceDesignView: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        //création de cercles
+        Circle()
+            .scale(1.7)
+            .foregroundColor(.white).opacity(0.16)
+        Circle()
+            .scale(1.35)
+            .foregroundColor(.white)
     }
 }
 

@@ -23,17 +23,10 @@ struct ContentView: View {
                 ColorSwitchButton(colorChoise: $colorInterface)
                 Color(listOfDatas.colorInterface()[colorInterface])
                     .ignoresSafeArea()
-                
-                Circle()
-                    .scale(1.7)
-                    .foregroundColor(.white).opacity(0.16)
-                Circle()
-                    .scale(1.35)
-                    .foregroundColor(.white)
+                InterfaceDesignView()
             VStack {
-                Text("Login")
-                    .font(.largeTitle)
-                    .bold()
+                // titre app
+                TitleView()
                 // image
                 UserImage(image:.constant( (listOfDatas.listUsers()[userChoise].userImage)))
           
