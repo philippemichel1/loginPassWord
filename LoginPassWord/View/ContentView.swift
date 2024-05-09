@@ -30,7 +30,6 @@ struct ContentView: View {
                 // image
                 UserImage(image:.constant( (listOfDatas.listUsers()[userChoice].userImage)))
           
-                    
                 // picker de selection des utilisateurs
                 PickerView(userChoice: $userChoice)
                 .onChange(of: userChoice) {
@@ -78,7 +77,6 @@ struct ContentView: View {
         }
         .navigationBarHidden(true)
     }
-    
     
 //authentification utilisateur
     func authenticateUser(password: String) {
