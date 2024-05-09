@@ -71,7 +71,10 @@ struct ContentView: View {
                 // affiche la fenetre d'alerte si mot de passe incorrect
                 .alert("Information", isPresented: $showAlert) {
                     Text("Echec de connexion !")
-                    Button("OK", role: .cancel)  {focus = true}
+                    Button("OK", role: .cancel)  {
+                        focus = true
+                        password = ""
+                    }
                 }
             }
             .padding()
