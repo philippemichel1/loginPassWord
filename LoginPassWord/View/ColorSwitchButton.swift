@@ -20,17 +20,21 @@ struct ColorSwitchButton: View {
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
                     Button(action: {
-                        if colorChoise < listOfDatas.colorInterface().count - 1 {
-                            colorChoise += 1
-                        } else {
-                            colorChoise = 0
-                        }
+                        switchColor()
                         
                     }) {
                         Image(systemName: "swatchpalette.fill")
                     }
                 }
             }
+        }
+    }
+    // permet de passer à l'index de couleur suivante
+    func switchColor() {
+        if colorChoise < listOfDatas.colorInterface().count - 1 {
+            colorChoise += 1
+        } else {
+            colorChoise = 0
         }
     }
 }
